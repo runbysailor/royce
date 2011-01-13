@@ -1,0 +1,155 @@
+html {
+	overflow-y: scroll;
+}
+
+@font-face {
+  font-family: avantgarde;
+  src: url(avantgarde.otf);
+}
+
+a {
+	color: #c0c0c0;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #909090;
+}
+
+a:visited {
+  outline: none;
+}
+
+img {
+	border: 0;
+}
+
+body, p, ol, ul, td {
+	color: #030;
+	line-height: 1.0em;
+  font-family: avantgarde;
+	font-size: 0.75em;
+}
+
+.clear {
+	clear: both;
+}
+
+#wrapper {
+	margin: auto;
+	width: 700px;
+	min-height: 354px;
+	height: auto !important;
+}
+
+#header {
+	margin: auto;
+	width: 550px;
+}
+
+#content {
+	height: auto !important;
+}
+
+.navigation {
+	width: 100px;
+	height: auto !important;
+}
+
+/* tabs */
+
+.about a {
+	float: left;
+	background: url(/images/about.png) no-repeat;
+	margin: 0 0 0 0;
+	padding: 0 0 3px 0;
+	width: 100px;
+	height: 30px;
+}
+
+.about a:hover {
+	background-position: 0 -30px;
+}
+
+.research a {
+	float: left;
+	background: url(/images/research.png) no-repeat;
+	margin: 0 0 0 0;
+	padding: 0 0 3px 0;
+	width: 100px;
+	height: 30px;
+}
+
+.research a:hover {
+	background-position: 0 -30px;
+}
+
+.portfolio a {
+	float: left;
+	background: url(/images/portfolio.png) no-repeat;
+	margin: 0 0 0 0;
+	padding: 0 0 3px 0;
+	width: 100px;
+	height: 30px;
+}
+
+.portfolio a:hover {
+	background-position: 0 -30px;
+}
+
+.people a {
+	float: left;
+	background: url(/images/people.png) no-repeat;
+	margin: 0 0 0 0;
+	padding: 0 0 3px 0;
+	width: 100px;
+	height: 30px;
+}
+
+.people a:hover {
+	background-position: 0 -30px;
+}
+
+.contact a {
+	float: left;
+	background: url(/images/contact.png) no-repeat;
+	margin: 0 0 0 0;
+	padding: 0 0 3px 0;
+	width: 100px;
+	height: 30px;
+}
+
+.contact a:hover {
+	background-position: 0 -30px;
+}
+
+/* page */
+	
+.page {
+	position: absolute;
+	padding: 0 10px 0 10px;
+	margin: 0 10px 0 110px;
+	width: 460px;
+	min-height: 162px;
+	border-left: solid;
+	border-right: solid;
+	border-color: #909090;
+	border-width: 1px;
+	text-align: right;
+}
+
+/* feed */
+
+.feed {
+	color: #fff;
+	position: absolute;
+	margin: 0 0 0 600px;
+	width: 100px;
+	height: auto !important;
+}
+
+#footer {
+	position: relative;
+	margin: auto;
+	text-align: center;
+}

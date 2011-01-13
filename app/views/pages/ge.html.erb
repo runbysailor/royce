@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Royce Commercial Real Estate</title>
+		<meta name="Description" content="Our firm exclusively manages commercial real estate investments, with a particular focus on the general and medical office product type. We remain committed to five pillars of service." />
+		<meta name="Keywords" content="oklahoma commercial real estate,oklahoma investment property,norman real estate,office building management,norman office buildings,micah alcorn,charles nichsolson,royce commercial,josiah royce,price edwards,equity realty" />
+		<script src="http://www.google.com/jsapi?key=ABQIAAAApMKutKhHKWZxgIKIDRGUNxSLjVzvwien2eZPAinV-ZQK7ya0kxQ55Urnd4rAW9N46uO3bxC6RG-XQA"></script>
+    <script type="text/javascript"> 
+  		var ge; 
+  		google.load("earth", "1"); 
+        
+      function init() { 
+  			google.earth.createInstance('map3d', initCB, failureCB); 
+      } 
+      
+      // ge code revised by Micah Alcorn // mail@micahalcorn.com //
+      
+      function initCB(instance) {
+  			ge = instance; 
+  			ge.getWindow().setVisibility(true); 
+        
+  			kmzCities = getNL('http://roycecre.com/ge/kml/clevelandCities.kmz');
+  			kmzFloodplains = getNL('http://roycecre.com/ge/kml/clevelandFloodplains.kmz');
+  			kmzSections = getNL('http://roycecre.com/ge/kml/clevelandSections.kmz');
+        
+  			updateOptions();
+        
+        	var cam = ge.getView().copyAsCamera(ge.ALTITUDE_ABSOLUTE);
+  			ge.getOptions().setFlyToSpeed(0.1);
+  			cam.setAltitude(10000);
+  			cam.setLatitude(35.218404); 
+  			cam.setLongitude(-97.485436); 
+  			ge.getView().setAbstractView(cam);
+    		ge.getNavigationControl().setVisibility(ge.VISIBILITY_AUTO);
+  			ge.getOptions().setAtmosphereVisibility(true);
+        
+    		var screenOverlay = ge.createScreenOverlay(''); 
+        
+    		var icon = ge.createIcon(''); 
+  			icon.setHref('http://roycecre.com/ge/alogo.png'); 
+  			screenOverlay.setIcon(icon); 
+        
+  			screenOverlay.getOverlayXY().setXUnits(ge.UNITS_PIXELS); 
+  			screenOverlay.getOverlayXY().setYUnits(ge.UNITS_PIXELS); 
+  			screenOverlay.getOverlayXY().setX(137.5); 
+  			screenOverlay.getOverlayXY().setY(493.5); 
+        
+  			screenOverlay.getSize().setXUnits(ge.UNITS_PIXELS); 
+  			screenOverlay.getSize().setYUnits(ge.UNITS_PIXELS); 
+  			screenOverlay.getSize().setX(275); 
+  			screenOverlay.getSize().setY(93); 
+        
+  			ge.getFeatures().appendChild(screenOverlay);
+          
+        // Aerials //
+        
+  			var link = ge.createLink('');
+  			var href = 'http://roycecre.com/ge/kml/a239N3W-E.kmz'
+  			link.setHref(href);
+        
+  			var networkLink = ge.createNetworkLink('');
+  			networkLink.set(link, true, false);
+        
+  			ge.getFeatures().appendChild(networkLink);
+        
+  			var link = ge.createLink('');
+  			var href = 'http://roycecre.com/ge/kml/a119N3W-SW.kmz'
+  			link.setHref(href);
+        
+  			var networkLink = ge.createNetworkLink('');
+  			networkLink.set(link, true, false);
+        
+  			ge.getFeatures().appendChild(networkLink);
+        
+  			var link = ge.createLink('');
+  			var href = 'http://roycecre.com/ge/kml/a109N3W-SE.kmz'
+  			link.setHref(href);
+        
+  			var networkLink = ge.createNetworkLink('');
+  			networkLink.set(link, true, false);
+        
+  			ge.getFeatures().appendChild(networkLink);
+        
+  			var link = ge.createLink('');
+  			var href = 'http://roycecre.com/ge/kml/a149N3W-NW.kmz'
+  			link.setHref(href);
+        
+  			var networkLink = ge.createNetworkLink('');
+  			networkLink.set(link, true, false);
+        
+  			ge.getFeatures().appendChild(networkLink);
+        
+  			var link = ge.createLink('');
+  			var href = 'http://roycecre.com/ge/kml/mooreAerial.kmz'
+  			link.setHref(href);
+        
+  			var networkLink = ge.createNetworkLink('');
+  			networkLink.set(link, true, false);
+        
+  			ge.getFeatures().appendChild(networkLink);
+        
+        // Places //
+        
+  			var link = ge.createLink('');
+  			var href = 'http://roycecre.com/ge/kml/jhg.kmz'
+  			link.setHref(href);
+        
+  			var networkLink = ge.createNetworkLink('');
+  			networkLink.set(link, true, false);
+        
+  			ge.getFeatures().appendChild(networkLink);
+        
+  			var link = ge.createLink('');
+  			var href = 'http://roycecre.com/ge/kml/mh.kmz'
+  			link.setHref(href);
+        
+  			var networkLink = ge.createNetworkLink('');
+  			networkLink.set(link, true, false);
+        
+  			ge.getFeatures().appendChild(networkLink);
+        
+      }
+      
+      function getNL(kmlURL){
+  		  var nl = ge.createNetworkLink("");
+  		  var link = ge.createLink("");
+  		  link.setHref(kmlURL);
+  		  nl.setLink(link);
+  		  ge.getGlobe().getFeatures().appendChild(nl);
+  		  return nl;
+      }
+        
+      // Options //
+    
+      function updateOptions() {
+    		var options = ge.getOptions();
+    		var form = document.options;
+        
+    		kmzCities.setVisibility(document.options.cities.checked);
+    		kmzFloodplains.setVisibility(document.options.floodplains.checked);
+    		kmzSections.setVisibility(document.options.sections.checked);
+          
+    		options.setScaleLegendVisibility(form.scale.checked);
+          
+        if (form.borders.checked) {
+    			ge.getLayerRoot().enableLayerById(ge.LAYER_BORDERS, true);
+        } else {
+    			ge.getLayerRoot().enableLayerById(ge.LAYER_BORDERS, false);
+        }
+        
+        if (form.roads.checked) {
+    			ge.getLayerRoot().enableLayerById(ge.LAYER_ROADS, true);
+        } else {
+    			ge.getLayerRoot().enableLayerById(ge.LAYER_ROADS, false);
+        }
+        
+      }
+      
+      function failureCB(errorCode) { 
+      } 
+      
+      function fly_to(to){ 
+        var la = ge.createLookAt(''); 
+              
+        switch(to){ 
+          case 'tra': 
+          la.set(35.218404, -97.485436, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 10000); 
+          break; 
+          case 'cur': 
+          la.set(35.206167, -97.477376, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 600); 
+          break; 
+          case 'lin': 
+          la.set(35.202441, -97.469126, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 600); 
+          break; 
+          case 'quo': 
+          la.set(35.231081, -97.482285, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 600); 
+          break; 
+          case 'dil': 
+          la.set(35.240502, -97.48641, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 600); 
+          break; 
+          case 'rep': 
+          la.set(35.232282, -97.493845, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 600); 
+          break; 
+        } 
+                  
+        ge.getView().setAbstractView(la); 
+            
+        } 
+          
+      function getInheritedVisibility(layer) { 
+        if (!layer.getVisibility()) { 
+          return false; 
+        } else { 
+          var parent = layer.getParentNode(); 
+          if (!parent) 
+          return true; 
+          
+          return getInheritedVisibility(parent); 
+        } 
+      } 
+      
+      google.setOnLoadCallback(init); 
+        
+  	</script> 
+    <style type="text/css">
+      .style1 {
+        text-align: center;
+      }
+      .style4 {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: small;
+        color: #003300;
+      }
+      .style8 {
+        color: #003300;
+      }
+      .style9 {
+        text-align: left;
+        margin-top: 0px;
+      }
+      .style10 {
+        text-align: right;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: small;
+        color: #003300;
+      }
+      .style11 {
+        border-width: 0;
+      }
+      .style12 {
+        color: #003300;
+        text-align: left;
+      }
+      .style13 {
+        color: #003300;
+        margin-bottom: 0px;
+      }
+      .style14 {
+        margin-bottom: 0px;
+      }
+    </style>
+    <script type="text/javascript">
+    
+    function FP_swapImg() {
+      var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
+        n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
+            elm.$src=elm.src; elm.src=args[n+1]; } }
+    }
+          
+      function FP_preloadImgs() {
+        var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
+        for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
+      }
+      
+      function FP_getObjectByID(id,o) {
+        var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
+        else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
+        if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
+        for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
+        f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
+            for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
+            return null;
+      }
+          
+      function FP_swapImgRestore() {
+        var doc=document,i; if(doc.$imgSwaps) { for(i=0;i<doc.$imgSwaps.length;i++) {
+          var elm=doc.$imgSwaps[i]; if(elm) { elm.src=elm.$src; elm.$src=null; } } 
+          doc.$imgSwaps=null; }
+        }
+    </script>
+  </head>  <body onload="FP_preloadImgs('http://roycecre.com/ge/overhome.jpg')">
+    <table style="height: 570px; width: 900px" align="center">
+      <tr>
+    		<td style="width: 530px; height: 30px;" class="style4" valign="bottom">
+    			<div id='options_container' class="style9"> 
+            <form name="options" action='javascript:updateOptions();' class="style13" style="width: 526px;">
+              <strong>Options: </strong>
+          		<span class="style8"><input type="checkbox" onclick='updateOptions()' name="scale" /></span>Scale
+              <span class="style8"><input type="checkbox" onclick='updateOptions()' name="borders" /></span>Borders
+              <span class="style8"><input type="checkbox" onclick='updateOptions()' name="cities" /></span>Cities
+              <span class="style8"><input type="checkbox" onclick='updateOptions()' name="roads" /></span>Roads
+              <span class="style8"><input type="checkbox" onclick='updateOptions()' name="floodplains" /></span>Floodplains
+              <span class="style8"><input type="checkbox" onclick='updateOptions()' name="sections" /></span>Sections
+            </form>
+          </div>
+        </td>
+    		<td style="width: 370px; height: 30px;" class="style10" valign="bottom">
+    			<form id="properties" action="flyto" method="get" name="propertylocator" style="width: 366px;" class="style14">
+            <strong>Locator:</strong>&nbsp;&nbsp;
+        		<span class="style8">
+        			<select onChange="fly_to(this.value);" style="width:200px; font-size: 12px; color:#003300" name="propertylocator">
+                <option value="tra">Trade Area</option>
+                <option value="cur">Current Location</option>
+                <option value="lin">Lindsey Square | W Lindsey</option>
+                <option value="quo">Quorum Office Park | 26th Avenue NW</option>
+                <option value="dil">Dillard Building | N Interstate Drive</option>
+                <option value="rep">Republic Square | 36th Avenue NW</option>
+              </select>
+            </span>
+          </form>
+        </td>
+      </tr>  
+      <tr>
+        <td class="style8" colspan="2" style="width: 900px; height: 540px">
+          <div id="map3d" style="height: 540px; width: 900px;" class="style1">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="style12" style="height: 30px; width: 900px;" colspan="2">
+          <a href="http://roycecre.com/" class="style10">
+            <img alt="home" src="http://roycecre.com/ge/home.jpg" style="float: left" id="home" onmouseout="FP_swapImgRestore()" onmouseover="FP_swapImg(1,1,/*id*/'home',/*url*/'overhome.jpg')" class="style11" />
+          </a>
+          <img alt="©" src="http://roycecre.com/ge/copy.jpg" style="float: right" id="©" />
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+.bundle
+log/
+tmp/**/*
+config/database.yml
+Rakefile
+db/schema.rb
